@@ -37,10 +37,16 @@ class CalculatorApp(QWidget):
   def initUI(self):
     # Sets window title
     self.setWindowTitle("Calculator App")
+    self.setFixedSize(400, 500)
 
     # Changes display properties
-    self.display.setReadOnly(True)
+    self.display.setReadOnly(False)
     self.display.setAlignment(Qt.AlignRight)
+    self.display.setFixedSize(380, 50)
+
+
+    for widget in self.findChildren(QPushButton):
+      widget.setFixedSize(80, 80)
 
     # initialize 4 columns for each button
     vbox1 = QVBoxLayout()
@@ -78,10 +84,26 @@ class CalculatorApp(QWidget):
 
     # Adds a VBox to allow for display to go on top
     main_layout = QVBoxLayout()
-    main_layout.addWidget(self.display) # Display goes first
+    main_layout.addWidget(self.display, alignment=Qt.AlignHCenter) # Display goes first, align it to the center
     main_layout.addLayout(hbox) # Button columns go under it
+    
 
     self.setLayout(main_layout)
+
+    self.display.setObjectName("display")
+    
+
+    self.setStyleSheet("""
+      QPushButton{
+        font-family: calibri
+        font-size: 30px;
+      }
+                       
+      QLineEdit#display{
+        font-size: 45px;
+                       }
+
+    """)
   
   def operation():
      pass
