@@ -104,10 +104,21 @@ class CalculatorApp(QWidget):
                        }
 
     """)
+
+    # Connect signals to each button click
+    self.clear_button.clicked.connect(self.controls)
   
-  def operation():
+  # Allows for inputs 0-9
+  def number_press(self):
+     pass
+  
+  # handles + - * / operations and state transistions
+  def operations(self):
      pass
 
+  # handles = and C operations
+  def controls(self):
+     print("yes")
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
